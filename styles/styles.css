@@ -20,13 +20,26 @@ h1 {
   box-sizing: content-box;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
-  max-width: 600px;
   min-width: 470px;
   aspect-ratio: 1/1;
-  flex: 1;
   display: flex;
   flex-wrap: wrap;
+}
+
+.canvas-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 605px;
   margin: 0 0.5rem;
+}
+
+.grid-size,
+.slide-container,
+.slider-value {
+  width: 200px;
+  align-self: center;
+  text-align: center;
 }
 
 .controls-container {
@@ -37,11 +50,11 @@ h1 {
   flex: 1;
   margin-right: 2rem;
   margin-left: 0.5rem;
+  justify-content: center;
 }
 
 #brush-colour {
   text-align: center;
-  margin-top: 1rem;
   margin-bottom: 0.3rem;
   font-size: 2rem;
 }
