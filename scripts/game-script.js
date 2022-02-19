@@ -5,9 +5,8 @@ const sliderValue = document.querySelector('.slider-value');
 function generatePixels(n) {
   for (let i = 0; i < n * n; i++) {
     const pixelBlock = document.createElement('div');
-    pixelBlock.style.height = `${600 / n}px`;
-    pixelBlock.style.width = `${600 / n}px`;
-    pixelBlock.style.float = 'left';
+    pixelBlock.style.height = `${(600 / n / 600) * 100}%`;
+    pixelBlock.style.width = `${(600 / n / 600) * 100}%`;
     pixelBlock.style.borderTop = '1px solid black';
     pixelBlock.style.borderLeft = '1px solid black';
     div.appendChild(pixelBlock);
