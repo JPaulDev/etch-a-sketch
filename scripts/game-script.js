@@ -17,7 +17,7 @@ function generatePixels(n) {
 generatePixels(30);
 
 slider.addEventListener('input', function updateValue() {
-  sliderValue.textContent = this.value;
+  sliderValue.textContent = `${this.value} x ${this.value}`;
 });
 
 slider.addEventListener('mouseup', () => {
