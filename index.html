@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Etch A Sketch</title>
     <link rel="stylesheet" href="./styles/styles.css">
     <script src="./scripts/game-script.js" defer></script>
@@ -10,8 +11,11 @@
     <h1>Etch A Sketch</h1>
     <div class="main-container">
       <div class="controls-container">
-        <div id="brush-colour">Brush Colour</div>
-        <div id="colour-box">Select Colour</div>
+        <div class="brush-colour">Brush Colour</div>
+        <input type="color" class="colour-selector">
+        <div class="instructions">Select a colour and hold down left 
+          mouse button to draw.
+        </div>
         <button id="eraser">ERASER</button>
         <button id="rainbow">RAINBOW BRUSH</button>
         <button id="clear">CLEAR</button>

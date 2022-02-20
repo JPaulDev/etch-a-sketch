@@ -1,15 +1,28 @@
-const div = document.querySelector('.canvas');
-const slider = document.querySelector('input');
+const canvas = document.querySelector('.canvas');
+const slider = document.querySelector('.slider');
 const sliderValue = document.querySelector('.slider-value');
+const colourSelector = document.querySelector('.colour-selector');
+
+let mouseDown = false;
+window.addEventListener('pointerdown', () => {
+  mouseDown = true;
+});
+
+window.addEventListener('pointerup', () => {
+  mouseDown = false;
+});
+
+function brush() {
+  if (mouseDown) this.style.background = colourSelector.value;
+}
 
 function generatePixels(n) {
   for (let i = 0; i < n * n; i++) {
     const pixelBlock = document.createElement('div');
     pixelBlock.style.height = `${(600 / n / 600) * 100}%`;
     pixelBlock.style.width = `${(600 / n / 600) * 100}%`;
-    pixelBlock.style.borderTop = '1px solid black';
-    pixelBlock.style.borderLeft = '1px solid black';
-    div.appendChild(pixelBlock);
+    pixelBlock.addEventListener('mouseover', brush);
+    canvas.appendChild(pixelBlock);
   }
 }
 
@@ -21,6 +34,6 @@ slider.addEventListener('input', function updateValue() {
 });
 
 slider.addEventListener('mouseup', () => {
-  div.replaceChildren();
+  canvas.replaceChildren();
   generatePixels(slider.value);
 });
