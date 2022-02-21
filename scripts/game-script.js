@@ -24,9 +24,14 @@ tools.forEach((tool) => {
 
 function toolAction() {
   if (mouseDown && currentTool === 'pen') {
-    this.style.background = colourSelector.value;
+    this.style.backgroundColor = colourSelector.value;
   } else if (mouseDown && currentTool === 'eraser') {
-    this.style.background = '#FFFFFF';
+    this.style.backgroundColor = '#FFFFFF';
+  } else if (mouseDown && currentTool === 'rainbow') {
+    let r = Math.round(Math.random() * (240 - 140) + 140);
+    let g = Math.round(Math.random() * (240 - 140) + 140);
+    let b = Math.round(Math.random() * (240 - 140) + 140);
+    this.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
   }
 }
 
