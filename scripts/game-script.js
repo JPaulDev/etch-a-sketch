@@ -3,6 +3,7 @@ const slider = document.querySelector('.slider');
 const sliderValue = document.querySelector('.slider-value');
 const colourSelector = document.querySelector('.colour-selector');
 const tools = document.querySelectorAll('.tools');
+const clearButton = document.querySelector('#clear');
 
 let currentTool = 'pen';
 let mouseDown = false;
@@ -28,12 +29,19 @@ function toolAction() {
   } else if (mouseDown && currentTool === 'eraser') {
     this.style.backgroundColor = '#FFFFFF';
   } else if (mouseDown && currentTool === 'rainbow') {
-    let r = Math.round(Math.random() * (240 - 140) + 140);
-    let g = Math.round(Math.random() * (240 - 140) + 140);
-    let b = Math.round(Math.random() * (240 - 140) + 140);
+    let r = Math.round(Math.random() * (240 - 70) + 70);
+    let g = Math.round(Math.random() * (240 - 70) + 70);
+    let b = Math.round(Math.random() * (240 - 70) + 70);
     this.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
   }
 }
+
+clearButton.addEventListener('click', () => {
+  const pixels = document.querySelectorAll('.canvas div');
+  pixels.forEach((pixel) => {
+    pixel.style.backgroundColor = '#FFFFFF';
+  });
+});
 
 function generatePixels(n) {
   for (let i = 0; i < n * n; i++) {
@@ -52,7 +60,7 @@ slider.addEventListener('input', function updateValue() {
   sliderValue.textContent = `${this.value} x ${this.value}`;
 });
 
-slider.addEventListener('mouseup', () => {
+slider.addEventListener('mouseup', function sliderVal() {
   canvas.replaceChildren();
-  generatePixels(slider.value);
+  generatePixels(this.value);
 });
