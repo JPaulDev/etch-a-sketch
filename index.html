@@ -11,13 +11,14 @@
     <h1>Etch A Sketch</h1>
     <div class="main-container">
       <div class="controls-container">
-        <div class="brush-colour">Brush Colour</div>
+        <div class="pen-colour">Pen Colour</div>
         <input type="color" value="#ff0000" class="colour-selector">
         <div class="instructions">Select a colour and hold down left 
           mouse button to draw.
         </div>
-        <button id="eraser">ERASER</button>
-        <button id="rainbow">RAINBOW BRUSH</button>
+        <button id="pen" class="tools selected">PEN</button>
+        <button id="eraser" class="tools">ERASER</button>
+        <button id="rainbow" class="tools">RAINBOW PEN</button>
         <button id="clear">CLEAR</button>
         <button id="gridlines">TOGGLE GRIDLINES</button>
       </div>
