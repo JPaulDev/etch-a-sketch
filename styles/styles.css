@@ -35,7 +35,6 @@ h1 {
   aspect-ratio: 1/1;
   display: flex;
   flex-wrap: wrap;
-  /* Removes 1 pixel gaps on canvas edges that appear at certain block sizes */
   justify-content: flex-end;
   align-content: flex-end;
 }

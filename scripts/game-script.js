@@ -8,40 +8,16 @@ const clearButton = document.querySelector('#clear');
 let currentTool = 'pen';
 let mouseDown = false;
 
-window.addEventListener('pointerdown', () => {
-  mouseDown = true;
-});
-window.addEventListener('pointerup', () => {
-  mouseDown = false;
-});
-
-tools.forEach((tool) => {
-  tool.addEventListener('click', function changeTool() {
-    document.querySelector('.selected').classList.remove('selected');
-    currentTool = this.getAttribute('id');
-    this.classList.add('selected');
-  });
-});
-
 function toolAction() {
   if (mouseDown && currentTool === 'pen') {
     this.style.backgroundColor = colourSelector.value;
   } else if (mouseDown && currentTool === 'eraser') {
     this.style.backgroundColor = '#FFFFFF';
   } else if (mouseDown && currentTool === 'rainbow') {
-    let r = Math.round(Math.random() * (240 - 70) + 70);
-    let g = Math.round(Math.random() * (240 - 70) + 70);
-    let b = Math.round(Math.random() * (240 - 70) + 70);
-    this.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    let hue = Math.trunc(Math.random() * 350);
+    this.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
   }
 }
-
-clearButton.addEventListener('click', () => {
-  const pixels = document.querySelectorAll('.canvas div');
-  pixels.forEach((pixel) => {
-    pixel.style.backgroundColor = '#FFFFFF';
-  });
-});
 
 function generatePixels(n) {
   for (let i = 0; i < n * n; i++) {
@@ -56,6 +32,14 @@ function generatePixels(n) {
 // Called on load to draw initial blocks
 generatePixels(30);
 
+window.addEventListener('pointerdown', () => {
+  mouseDown = true;
+});
+
+window.addEventListener('pointerup', () => {
+  mouseDown = false;
+});
+
 slider.addEventListener('input', function updateValue() {
   sliderValue.textContent = `${this.value} x ${this.value}`;
 });
@@ -63,4 +47,19 @@ slider.addEventListener('input', function updateValue() {
 slider.addEventListener('mouseup', function sliderVal() {
   canvas.replaceChildren();
   generatePixels(this.value);
+});
+
+tools.forEach((tool) => {
+  tool.addEventListener('click', function changeTool() {
+    document.querySelector('.selected').classList.remove('selected');
+    currentTool = this.getAttribute('id');
+    this.classList.add('selected');
+  });
+});
+
+clearButton.addEventListener('click', () => {
+  const pixels = document.querySelectorAll('.canvas div');
+  pixels.forEach((pixel) => {
+    pixel.style.backgroundColor = '#FFFFFF';
+  });
 });
