@@ -58,8 +58,6 @@ tools.forEach((tool) => {
 });
 
 clearButton.addEventListener('click', () => {
-  const pixels = document.querySelectorAll('.canvas div');
-  pixels.forEach((pixel) => {
-    pixel.style.backgroundColor = '#FFFFFF';
-  });
+  canvas.replaceChildren();
+  generatePixels(slider.value);
 });
